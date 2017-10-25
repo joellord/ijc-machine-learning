@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="./libs/card-stack.css">
+		<link rel="stylesheet" href="./libs/default.css">
+	</head>
+
+	<body>
+		<div class="left">
+
+		</div>
+		<div class="right">
+
+		</div>
+
+		<div id="viewport">
+		  <ul class="stack">
+		    <li class="card"></li>
+		    <li class="card start">#2</li>
+		  </ul>
+		</div>
+
+		<div class="guess">
+
+		</div>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="./libs/swing.js"></script>
+		<script src="./libs/simple-classifier.js"></script>
+
+		<script type="text/javascript">
+
+var Swing = window.swing;
+const CATEGS = {
+	"Symbol(LEFT)": "ENGLISH",
+	"Symbol(RIGHT)": "FRANÇAIS"
+};
+
+document.querySelector(".left").innerText = CATEGS["Symbol(LEFT)"];
+document.querySelector(".right").innerText = CATEGS["Symbol(RIGHT)"];
+
+const cards = [].slice.call(document.querySelectorAll('ul li'));
+
+const stack = Swing.Stack();
+
+var classifier = new Classifier();
+
+cards.forEach((targetElement) => {
+  stack.createCard(targetElement);
+});
+
+stack.on('throwout', (event) => {
+  var text = event.target.innerText;
+
+  event.target.remove();
+  var card = document.createElement("li");
+  card.appendChild(document.createTextNode(randomQuote()));
+
+  document.querySelector(".guess").innerText = classifier.categorize(card.innerText);
+
+  document.querySelector("#viewport ul").appendChild(card);
+  stack.createCard(card);
+
+  classifier.classify(text, CATEGS[event.throwDirection.toString()]);
+});
+
+
+var quotes = "À vaillant coeur rien d’impossible.---Dans une grande ame tout est grand.---Chacun voit midi à sa porte.---Je pense, donc, je suis.---On ne change pas une équipe qui gagne.---Prouver que j’ai raison serait accorder que je puis avoir tort.---On n’est point toujours une bête pour l’avoir été quelquefois.---Il n’y a pas de verités moyennes.---Chassez le naturel, il revient au galop.---Vaut mieux prévenir que guérir.---Le temps est un grand maître, dit-on. Le malheur est qui’il tue ses éléves.---Être adulte, c’est être seul.---Un homme seul est toujours en mauvaise compagnie.---A vaincre sans peril, on triomphe sans gloire---L’enfer, c’est les autres---La raison c’est la folie du plus fort. La raison du moins fort c’est de la folie---Autres temps, autres mæurs---La vérité vaut bien qu’on passe quelques années sans la trouver---Il faut bonne mémoire après au’on a meni---Qui craint de souffrir, il souffre déjà de ce qu’il craint---Il vaut mieux faire que dire---La parfait valeur est de faire sand témoin ce qu’on serait capable de faire devant tout le monde.---La vie est une fleur dont l’amour est le miel.---Il n’y a qu’un bonheur dans la vie, c’est d’aimer et d’être aimé---Aimer, ce n’est pas se regarder l’un l’autre, c’est regarder ensemble dans la même direction---Choisissez votre femme par l’oreille bien plus que par les yeux---Plus l’offenseur m’est cher, plus je ressens l’injure---Va, je ne te hais point---On n’aime que ce qu’on ne possède pas tout entier---L’amour est comme le vent, nous ne savons pas d’où il vient---La vie est un sommeil, l’amour en est le rêve---Le cœur a ses raisons que la raison ne connaît pas---Le seul vrai langage au monde est un baiser---Entre deux cœurs qui s’aiment, nul besoin de paroles---Vivre sans aimer n’est pas proprement vivre---Oh! Si tu pouvais lire dans mon coeur, tu verrais la place où je t’ai mise!---L’amour c’est être stupide ensemble---Un seul être vous manque et tout est dépeuplé---C’est cela l’amour, tout donner, tout sacrifier sans espoir de retour---L’amour est une passion qui ne se soumet à rien, et à qui au contraire, toutes choses se soumettent---Le prix d’Amour, c’est seulement Amour… Il faut aimer si l’on veut etre aimé…---Honoré d’Urfé---On ne voit bien qu’avec le coeur---Un peuple malheureux fait les grands artistes---L’æuvre d’art, c’est une idée qu’on exagére---Les livres sont des amis froids et sûrs---Le monde est un livre dont chaque pas nous ouvre une page---Écrire, c’est une façon de parler sans être interrompu---Imaginer c’est choisir---Les chefs-d’oeuvre ne sont jamais que des tentatives heureuses---La critique est aisée, mais l’art est difficile---It’s not that I’m so smart, it’s just that I stay with problems longer.---Eighty percent of success is showing up.---I respect faith, but doubt is what gets you an education.---The greatest obstacle to discovery is not ignorance; it is the illusion of knowledge.---The pessimist complains about the wind; the optimist expects it to change; the realist adjusts the sails.---If you don’t make mistakes, you’re not working on hard enough problems. And that’s a big mistake.---You can never get enough of what you don’t really need.---Insanity: doing the same thing over and over again and expecting different results.---Do not confuse motion and progress. A rocking horse keeps moving but does not make any progress.---I don’t know the key to success, but the key to failure is trying to please everybody.---Tomorrow is often the busiest day of the week.---Be yourself; everyone else is already taken.---There is a great difference between worry and concern. A worried person sees a problem, and a concerned person solves a problem.---It is easier to fight for one’s principles than to live up to them.---I hear: I forget / I see: I remember / I do: I understand---Discipline is just choosing between what you want now and what you want most.---The very best thing you can do for the whole world is to make the most of yourself.---Good judgment comes from experience, and experience comes from bad judgment.---When I do good, I feel good; when I do bad, I feel bad, and that is my religion.---Success consists of going from failure to failure without loss of enthusiasm.---If it weren’t for my lawyer, I’d still be in prison. It went a lot faster with two people digging.---Acquaintance, n.: A person whom we know well enough to borrow from, but not well enough to lend to.---I like long walks, especially when they are taken by people who annoy me.---The difference between death and taxes is death doesn’t get worse every time Congress meets.---You know you’re getting old when you stop to tie your shoelaces and wonder what else you could do while you’re down there.---Time flies like an arrow; fruit flies like a banana.---Those are my principles. If you don’t like them I have others.---Somewhere on this globe, every ten seconds, there is a woman giving birth to a child. She must be found and stopped.---Quidquid latine dictum sit, altum sonatur. (Whatever is said in Latin sounds profound.)---The most remarkable thing about my mother is that for thirty years she served the family nothing but leftovers. The original meal has never been found.---The tooth fairy teaches children that they can sell body parts for money.---My friends tell me I have an intimacy problem. But they don’t really know me.---I don’t deserve this award, but I have arthritis and I don’t deserve that either.---I always wanted to be somebody, but now I realize I should have been more specific.---If God wanted us to fly, He would have given us tickets.---If I only had a little humility, I’d be perfect.---When I read about the evils of drinking, I gave up reading.---The secret of life is honesty and fair dealing. If you can fake that, you’ve got it made.---Hofstadter’s Law: It always takes longer than you expect, even when you take into account Hofstadter’s Law.---Honest criticism is hard to take, particularly from a relative, a friend, an acquaintance, or a stranger.---Education is what remains after one has forgotten what one has learned in school.---Millions long for immortality who do not know what to do with themselves on a rainy Sunday afternoon.---Computers are useless. They can only give you answers.---A genius! For 37 years I’ve practised fourteen hours a day, and now they call me a genius!---There is nobody so irritating as somebody with less intelligence and more sense than we have.---The bad news is time flies. The good news is you’re the pilot.---The little I know I owe to my ignorance.---The reasonable man adapts himself to the world; the unreasonable one persists to adapt the world to himself. Therefore all progress depends on the unreasonable man.---In God we trust; all others bring data.---The difference between the right word and the almost right word is the difference between lightning and a lightning bug.---Never argue with a fool, onlookers may not be able to tell the difference.---My definition of a free society is a society where it is safe to be unpopular.---Simple, clear purpose and principles give rise to complex and intelligent behavior. Complex rules and regulations give rise to simple and stupid behavior.---Logic will get you from A to B. Imagination will take you everywhere.---In preparing for battle I have always found that plans are useless, but planning is indispensable.---The opposite of a correct statement is a false statement. But the opposite of a profound truth may well be another profound truth.---Before you go and criticize the younger generation, just remember who raised them.---Talent hits a target no one else can hit; Genius hits a target no one else can see.---It is amazing what you can accomplish if you do not care who gets the credit.---A conclusion is the place where you got tired thinking.";
+
+quotes = quotes.split("---");
+
+var randomQuote = function() {
+  var index = Math.round(Math.random()*quotes.length);
+  return quotes[index];
+};
+
+document.querySelector(".start").innerText = randomQuote();
+
+		</script>
+
+	</body>
+</html>

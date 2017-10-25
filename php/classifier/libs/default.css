@@ -1,0 +1,19 @@
+.left {
+    position: relative;
+    font-size: 3em;
+    font-weight: bold;
+    float: left;
+}
+
+.right {
+    position: relative;
+    font-size: 3em;
+    font-weight: bold;
+    float: right;
+}
+
+.guess {
+    text-align: center;
+    font-size: 2em;
+    padding-top: 0.5em;
+}

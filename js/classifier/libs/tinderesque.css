@@ -1,0 +1,121 @@
+/* Design of a card */
+.card {
+  font-size: 14px;
+  line-height: 200px;
+  text-align:center;
+  width: 150px;
+  height: 200px;
+  display: block;
+  background: #666;
+  -webkit-transform-origin: 50% 99%;
+  transform-origin: 50% 99%;
+}
+.cardcontainer {
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+
+/* List functionality */
+.list .cardlist {
+  margin: 0;
+  padding: 0;
+}
+.tinderesque .list .card {
+  display: none;
+}
+.tinderesque .list .current {
+  display: block;
+}
+
+/* Button designs */
+
+.but-nope, .but-yay, .nopes, .yays {
+  display: none;
+}
+
+.tinderesque .but-nope, .tinderesque .but-yay,
+.tinderesque .nopes, .tinderesque .yays {
+  display: inline-block;
+}
+
+.cardcontainer button {
+  background: #0c0;
+  border: none;
+  color: #fff;
+  border-radius: 50% 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 .5em;
+  display: inline-block;
+}
+.cardcontainer button:focus {
+  outline: 0;
+  background: #0f0;
+}
+.cardcontainer .but-nope {
+  background: #c00;
+}
+.cardcontainer .but-nope:focus {
+  outline: 0;
+  background: #f00;
+}
+
+.tinderesque .cardcontainer.yes .card {
+  -webkit-animation: yay 0.7s ease-out;
+  animation: yay 0.7s ease-out;
+}
+.tinderesque .cardcontainer.nope .card {
+  -webkit-animation: nope 0.7s ease-out;
+  animation: nope 0.7s ease-out;
+}
+
+
+/*
+  Animations, isn't it 'fun' to repeat all of that, just for Safari? :)
+*/
+
+@keyframes yay {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes yay {
+  from {
+    -webkit-transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: rotate(40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes nope {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(-40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes nope {
+  from {
+    -webkit-transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: rotate(-40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
