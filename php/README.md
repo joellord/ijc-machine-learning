@@ -1,5 +1,5 @@
 # Learning Machine Learning
-Demo code for the "Learning Machine Learning" presentation at [Lone Start PHP '17](http://lonestarphp.com/)
+Demo code for the "Learning Machine Learning" presentation at [International Javascript Conference '17](https://javascript-conference.com)
 
 ## Tinder-like Naive Bayes Algorithm
 cd classifier
