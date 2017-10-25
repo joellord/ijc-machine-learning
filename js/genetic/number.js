@@ -3,12 +3,12 @@ const TARGET = 200;
 const MIN = 0;
 const MAX = TARGET - 1;
 const IND_COUNT = 4;
-const POP_SIZE = 20;
+const POP_SIZE = 200;
 const CLOSE_ENOUGH = 0.001;
 
 var RETAIN = 0.1;
-var RANDOM_SELECTION = 0.1;
-var MUTATION_PROBABILITY = 0.05;
+var RANDOM_SELECTION = 0.20;
+var MUTATION_PROBABILITY = 0.4;
 
 function randomInt(min, max) {
 	return Math.round(random(min, max));
@@ -26,12 +26,12 @@ function random(min, max) {
 }
 
 function fitness(individual) {
-	// sum = individual.reduce((a,b) => a + b, 0);
-	var x = individual[0];
-	var y = individual[1];
-	var z = individual[2];
-	var sum = x^2 + (y-6) * z;
-	return Math.abs(0 - sum);
+	sum = individual.reduce((a,b) => a + b, 0);
+	// var x = individual[0];
+	// var y = individual[1];
+	// var z = individual[2];
+	// var sum = x^2 + (y-6) * z;
+	return Math.abs(TARGET - sum);
 }
 
 function sortByFitness(population) {
@@ -123,6 +123,7 @@ function findSolution() {
 		debugText.push("Generation " + data[0]);
 		debugText.push("Fitness " + data[1]);
 		debugText.push("Sum " + data[2]);
+		debugText.push("Numbs [" + population[0][0] + ", " + population[0][1] + ", " + population[0][2] + ", " + population[0][3] + "]");
 		console.log(debugText.join(" - "));
 		// allData += data.join(", ") + "\n";
 
