@@ -123,7 +123,7 @@ function findSolution() {
 		debugText.push("Generation " + data[0]);
 		debugText.push("Fitness " + data[1]);
 		debugText.push("Sum " + data[2]);
-		debugText.push("Numbs [" + population[0][0] + ", " + population[0][1] + ", " + population[0][2] + ", " + population[0][3] + "]");
+		// debugText.push("Numbs [" + population[0][0] + ", " + population[0][1] + ", " + population[0][2] + ", " + population[0][3] + "]");
 		console.log(debugText.join(" - "));
 		// allData += data.join(", ") + "\n";
 
